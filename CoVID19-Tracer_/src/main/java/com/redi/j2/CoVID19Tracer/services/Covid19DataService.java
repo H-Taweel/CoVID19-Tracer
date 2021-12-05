@@ -37,8 +37,8 @@ public class Covid19DataService {
         HttpResponse<String> httpResponse= client.send(request, HttpResponse.BodyHandlers.ofString());
 
         StringReader csvReader = new StringReader(httpResponse.body());
-        //Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReader);
-        Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(csvReader);
+        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReader);
+        //Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(csvReader);
         for (CSVRecord record : records) {
             LocationStats locationStat = new LocationStats();
             locationStat.setState(record.get("Province/State"));
