@@ -24,6 +24,10 @@ public class Covid19DataService {
     // instantiate location stats
     private List<LocationStats> allStats = new ArrayList<>();
 
+    public List<LocationStats> getAllStats() {
+        return allStats;
+    }
+
     @PostConstruct
     //updating data by scheduling it every day at 06:00 am
     @Scheduled(cron = "* * 6 * * *")
