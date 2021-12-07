@@ -13,22 +13,24 @@
 <h1>CoVID19 Tracer Application</h1>
 <div class="jumbotron">
     <h1 class="display-4" th:text="${totalReportedCases}"></h1>
-    <h1 class="lead">Total cases reported as of today.</h1>
+    <h1 class="lead">Total cases reported as of today</h1>
 </div>
-
-<table>
-    <tr>
-        <th>State</th>
-        <th>Country</th>
-        <th>Total cases reported</th>
-    </tr>
-    <tr th:each="locationStat : ${locationStats}">
-        <td th:text="${locationStat.State}"></td>
-        <td th:text="${locationStat.country}"></td>
-        <td th:text="${locationStat.latestTotalCases}">0</td>
-    </tr>
-</table>
-
+<div class="container">
+    <table>
+        <tr>
+            <th>State</th>
+            <th>Country</th>
+            <th>Total cases reported</th>
+            <th>Chanf=ges since last day</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.State}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestTotalCases}">0</td>
+            <td th:text="${locationStat.diffFromPrevDay}">0</td>
+        </tr>
+    </table>
+</div>
 </body>
 
 </html>

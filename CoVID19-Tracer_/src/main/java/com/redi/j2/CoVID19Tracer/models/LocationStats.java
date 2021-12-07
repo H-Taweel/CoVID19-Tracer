@@ -3,7 +3,8 @@ package com.redi.j2.CoVID19Tracer.models;
 public class LocationStats {
     private String state;
     private String country;
-    private String latestTotalCases;
+    private int latestTotalCases;
+    private int diffFromPrevDay;
 
     public String getState() {
         return state;
@@ -21,12 +22,20 @@ public class LocationStats {
         this.country = country;
     }
 
-    public String getLatestTotalCases() {
+    public int getLatestTotalCases() {
         return latestTotalCases;
     }
 
-    public void setLatestTotalCases(String latestTotalCases) {
+    public void setLatestTotalCases(int latestTotalCases) {
         this.latestTotalCases = latestTotalCases;
+    }
+
+    public int getDiffFromPrevDay() {
+        return diffFromPrevDay;
+    }
+
+    public void setDiffFromPrevDay(int diffFromPrevDay) {
+        this.diffFromPrevDay = diffFromPrevDay;
     }
 
     @Override
