@@ -41,8 +41,11 @@ public class Covid19DataService {
         HttpResponse<String> httpResponse= client.send(request, HttpResponse.BodyHandlers.ofString());
 
         StringReader csvReader = new StringReader(httpResponse.body());
-        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReader);
-        //Iterable<CSVRecord> records = CSVFormat.DEFAULT.parse(csvReader);
+//        Iterable<CSVRecord> records = CSVFormat.DEFAULT.withFirstRecordAsHeader().parse(csvReader);
+        var builder = CSVFormat.Builder.create();
+        builder.setHeader().setSkipHeaderRecord(true);
+        var csvFormat = builder.build();
+        Iterable<CSVRecord> records = csvFormat.parse(csvReader);
         for (CSVRecord record : records) {
             LocationStats locationStat = new LocationStats();
             locationStat.setState(record.get("Province/State"));
@@ -53,7 +56,7 @@ public class Covid19DataService {
             locationStat.setDiffFromPrevDay(latestCases - prevDayCases);
 
             newStats.add(locationStat);
-            //System.out.println(locationStat);
+//            System.out.println(locationStat);
         }
         this.allStats = newStats;
     }
