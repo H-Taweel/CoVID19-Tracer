@@ -56,7 +56,7 @@ public class Covid19DataService {
             locationStat.setDiffFromPrevDay(latestCases - prevDayCases);
 
             newStats.add(locationStat);
-//            System.out.println(locationStat);
+            System.out.println(locationStat);
         }
         this.allStats = newStats;
     }
