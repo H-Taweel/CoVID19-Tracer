@@ -1,7 +1,5 @@
 package com.redi.j2.CoVID19Tracer.controllers;
 
-//import com.redi.j2.CoVID19Tracer.models.LocationStats;
-
 import com.redi.j2.CoVID19Tracer.models.MapStats;
 import com.redi.j2.CoVID19Tracer.services.Covid19DataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +21,15 @@ public class HomeController {
         long totalReportedDeaths = mapStats.stream().mapToLong(stat -> stat.getDeaths()).sum();
         long totalNewCases = mapStats.stream().mapToLong(stat -> stat.getTodayCases()).sum();
         long totalNewDeaths = mapStats.stream().mapToLong(stat -> stat.getTodayDeaths()).sum();
+        long totalRecovered = mapStats.stream().mapToLong(stat -> stat.getRecovered()).sum();
+        long totalNewRecovered = mapStats.stream().mapToLong(stat -> stat.getTodayRecovered()).sum();
         model.addAttribute("mapStats",mapStats);
         model.addAttribute("totalReportedCases",totalReportedCases);
         model.addAttribute("totalReportedDeaths",totalReportedDeaths);
         model.addAttribute("totalNewCases",totalNewCases);
         model.addAttribute("totalNewDeaths",totalNewDeaths);
+        model.addAttribute("totalRecovered",totalRecovered);
+        model.addAttribute("totalNewRecovered",totalNewRecovered);
 
         return "home";
     }

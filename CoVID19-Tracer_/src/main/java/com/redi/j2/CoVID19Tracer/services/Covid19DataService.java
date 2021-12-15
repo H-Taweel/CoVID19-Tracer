@@ -35,7 +35,6 @@ public class Covid19DataService {
                 .uri(URI.create(Data_Url)).build();
 
         HttpResponse<String> httpResponse = client.send(request, HttpResponse.BodyHandlers.ofString());
-//        StringReader jsonReader = new StringReader(httpResponse.body());
         JSONParser jsonParser = new JSONParser();
         List<MapStats> newStats = new ArrayList<>();
         try {
